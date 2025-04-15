@@ -9,7 +9,7 @@ import datetime
 lock = threading.Lock()
 thread_list=[]
 
-mem_threshold = 0.8
+mem_threshold = 0.7
 max_thread = 1
 
 def Log(v):
