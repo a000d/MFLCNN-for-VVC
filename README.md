@@ -47,3 +47,5 @@ To change the thread number generated in one time, we can modify the config file
 *mem_threshold* is used to check the memory space occupation of the computer. When the memory space occupation of the computer exceeds this value, no new thread will be allocated
 
 *max_thread* is used to specify how many scripts the manager allows to run simultaneously. When a running script is completed, the manager will automatically start the next script
+
+The training code will available soon.
