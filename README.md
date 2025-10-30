@@ -48,4 +48,6 @@ To change the thread number generated in one time, we can modify the config file
 
 *max_thread* is used to specify how many scripts the manager allows to run simultaneously. When a running script is completed, the manager will automatically start the next script
 
+Dataset can be available at https://ieee-dataport.org//documents/dataset-vvc-inter-frame-fast-partitioning-approach
+
 The training code will available soon.
