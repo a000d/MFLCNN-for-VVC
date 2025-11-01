@@ -8,46 +8,47 @@ Fast Inter Partitioning method for VVC
 1.Modified code integrated with VTM 10.0;\
 2.ONNX inference code for model deployment;\
 3.Model weight files in ONNX format;\
-4.Pre-compiled executables for rapid execution.
+4.Pre-compiled executables for execution.
 
 # How to run it
 #### !The pre-build pragram can only run in Linux system.!
 
+In our tests, the program for original VVC and accelerated VVC are all complied and exectued in the following environment: Ubuntu 20.24.2, AMD EPYC 9654 96 Core processor, 192G Memory 4800 MT/s
 
-The pre-build pragram is in forder *./run/*  . Before we test the pragram, the CTC squence forder should be placed in this forder, the forder tree is as this:
+The pre-built program is located in the *./run/* folder. Before testing the program, the CTC sequence folder should be placed in this directory. The folder structure should be as follows:
 
 ![forder](forder.png)
 
-Next, run the code to generate the shell script and the output forder
+Next, run the following command to generate shell scripts and an output folder:
 ``` shell
 cd run
 python gen_sh.py 
 ```
-We will get 300 script files in forder */sh* like this
+This will generate 300 script files in the  */sh* , as shown below:
 
 ![sh](sh.png)
 
-We need to run these scripts one by one and wait for one or two days until they are all run. To speed up this process, we use a python thread manager to help us.
+These scripts need to be run one by one, which may take one or two days to complete. To accelerate this process, a Python thread manager can be used:
 
 ``` shell
 python Thread_Mgr.py
 ```
-This script will generate multiple threads to run the scripts in forder */sh/*, it can save our time. 
+This script will create multiple threads to run the scripts in the */sh/* folder, saving time.
 
-#### *But it should be noted that if the computer performance is not high enough and the number of programs running at the same time is too large, the programs may compete with each other for computer resources, and the encoding time will be inaccurate.*
+#### *Note: If the computer performance is insufficient and too many programs run simultaneously, they may compete for system resources, resulting in inaccurate encoding time measurements.*
 
 
-To change the thread number generated in one time, we can modify the config file *Thread_Cfg.json* 
+To adjust the number of concurrent threads, modify the configuration file  *Thread_Cfg.json* 
 ``` json
 {
     "mem_threshold":"0.7",
     "max_thread":"1"
 }
 ```
-*mem_threshold* is used to check the memory space occupation of the computer. When the memory space occupation of the computer exceeds this value, no new thread will be allocated
+*mem_threshold* Checks the computer's memory usage. No new threads will be allocated when memory usage exceeds this threshold.
 
-*max_thread* is used to specify how many scripts the manager allows to run simultaneously. When a running script is completed, the manager will automatically start the next script
+*max_thread* Specifies the maximum number of scripts allowed to run simultaneously. The manager will automatically start the next script once a running one completes.
 
 Dataset can be available at https://ieee-dataport.org//documents/dataset-vvc-inter-frame-fast-partitioning-approach
 
-The training code will available soon.
+The training code, training data extraction code will available soon.
